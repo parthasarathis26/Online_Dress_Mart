@@ -1,6 +1,6 @@
-# Online Dress Mart
+# **Online Dress Mart**
 ## Overview
-- Online sales and purchase of dresses.
+- Online Dress Mart is an e-commerce platform for the seamless buying and selling of dresses, offering a wide range of collections for men, women, and kids.
 ## Objective
 - To gain more customers
 - Customers easy purchase
@@ -8,7 +8,7 @@
 ## Project Workflow
 - It have
   - SignIn Page
-  -  Login Page
+  - Login Page
   - Home Page
   - Men's Collection
   - Women's Collection
