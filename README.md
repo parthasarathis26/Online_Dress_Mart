@@ -27,3 +27,5 @@
 ## Tech
   - React
   - MongoDB(Database)
+## Image
+<img src="./images/dress-wireframe.jpg">
