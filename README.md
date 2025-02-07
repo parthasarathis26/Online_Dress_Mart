@@ -13,7 +13,7 @@
   - Men's Collection
   - Women's Collection
   - Kid's Collection
-  - Liked Dresses
+  - Liked Dress
   - Contact Page
 - Admin
   - View
