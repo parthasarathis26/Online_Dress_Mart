@@ -12,12 +12,15 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email === 'test@example.com' && password === 'password') {
+    if (email.trim() === '') {
+      setError('Email is required');
+    } else if (password.trim() === '') {
+      setError('Password is required');
+    } 
+    else {
       setError('');
       alert('Login Successful');
-      navigate('/');
-    } else {
-      setError('Invalid email or password');
+      navigate('/home');
     }
   };
 

@@ -7,6 +7,7 @@ import '../styles/Auth.css';
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -21,6 +22,8 @@ const Signup = () => {
       setError('Invalid email format');
     } else if (password.length < 6) {
       setError('Password must be at least 6 characters');
+    } else if (password !== confirmPassword) {
+      setError('Passwords do not match');
     } else {
       setError('');
       alert('Signup Successful');
@@ -47,6 +50,13 @@ const Signup = () => {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
         <button type="submit">Signup</button>
