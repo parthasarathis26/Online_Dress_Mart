@@ -22,8 +22,8 @@ const Navigation = () => {
       </div>
       <ul className="navbar-menu">
         <li><Link to="/home">Home</Link></li>
-        <li><Link to="/mens">Mens</Link></li>
-        <li><Link to="/womens">Womens</Link></li>
+        <li><Link to="/men">Mens</Link></li>
+        <li><Link to="/women">Womens</Link></li>
         <li><Link to="/kids">Kids</Link></li>
         <li><Link to="/Liked">Liked</Link></li>
         <li><Link to="/contact">Contact</Link></li>

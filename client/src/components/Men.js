@@ -1,30 +1,25 @@
-// src/components/Home.js
+// src/components/Men.js
 import React, { useEffect, useState } from 'react';
 import Navigation from './Navigation';
 import Card from './Card';
 import productsData from '../assets/clothing_products_400.json';
 import '../styles/Home.css';
 
-const Home = () => {
+const Men = () => {
   const [products, setProducts] = useState([]);
-  const [visible, setVisible] = useState(20); // Show 20 products initially
+  const [visible, setVisible] = useState(20);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [checkoutProduct, setCheckoutProduct] = useState(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    address: '',
-    quantity: 1,
-    size: ''
-  });
 
   useEffect(() => {
-    setProducts(productsData);
+    const filteredProducts = productsData.filter(
+      (product) => product.gender === 'Men' || product.gender === 'Unisex'
+    );
+    setProducts(filteredProducts);
   }, []);
 
   const loadMore = () => {
-    setVisible((prevValue) => prevValue + 20); // Load 20 more each click
+    setVisible((prevValue) => prevValue + 20);
   };
 
   const openDetails = (product) => {
@@ -41,30 +36,22 @@ const Home = () => {
 
   const buyNow = (product) => {
     setCheckoutProduct(product);
-    setFormData({
-      ...formData,
-      size: product.size_options[0] // Default to first size
-    });
   };
 
   const closeCheckout = () => {
     setCheckoutProduct(null);
   };
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleBuy = () => {
     alert('Order placed successfully! Cash on Delivery.');
-    setCheckoutProduct(null);
+    closeCheckout();
   };
 
   return (
     <>
       <Navigation />
       <div className="home-content">
-        <h1>Discover the Latest Trends</h1>
+        <h1>Men's Collection</h1>
         <div className="product-grid">
           {products.slice(0, visible).map((product, index) => (
             <Card key={index} product={product} onClick={() => openDetails(product)} />
@@ -76,12 +63,10 @@ const Home = () => {
           </button>
         )}
 
-        {/* Product Details Modal */}
         {selectedProduct && (
           <div className="product-details-overlay" onClick={closeDetails}>
             <div className="product-details-container" onClick={(e) => e.stopPropagation()}>
               <span className="close-symbol" onClick={closeDetails}>&times;</span>
-              
               <div className="product-details-left">
                 <img src={selectedProduct.photo} alt={selectedProduct.product_name} />
               </div>
@@ -96,7 +81,6 @@ const Home = () => {
                     <li key={index}>{size}</li>
                   ))}
                 </ul>
-                
                 <button onClick={() => addToCart(selectedProduct)} className="add-to-cart">Add to Cart</button>
                 <button onClick={() => buyNow(selectedProduct)} className="buy-now">Buy Now</button>
                 <button onClick={closeDetails} className="close-details">Close</button>
@@ -105,65 +89,30 @@ const Home = () => {
           </div>
         )}
 
-        {/* Checkout Container */}
         {checkoutProduct && (
-          <div className="checkout-overlay" onClick={closeCheckout}>
+          <div className="product-details-overlay" onClick={closeCheckout}>
             <div className="checkout-container" onClick={(e) => e.stopPropagation()}>
               <h2>Checkout</h2>
-              <p>{checkoutProduct.product_name}</p>
-              <p>Price: {checkoutProduct.prices}</p>
               <form>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="text"
-                  name="address"
-                  placeholder="Address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  required
-                />
-                <input
-                  type="number"
-                  name="quantity"
-                  placeholder="Quantity"
-                  min="1"
-                  value={formData.quantity}
-                  onChange={handleChange}
-                  required
-                />
-                <select
-                  name="size"
-                  value={formData.size}
-                  onChange={handleChange}
-                >
+                <input type="text" placeholder="Name" required />
+                <input type="email" placeholder="Email" required />
+                <input type="text" placeholder="Phone Number" required />
+                <input type="text" placeholder="Address" required />
+                <select>
+                  <option>Quantity</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+                <select>
+                  <option>Select Size</option>
                   {checkoutProduct.size_options.map((size, index) => (
-                    <option key={index} value={size}>{size}</option>
+                    <option key={index}>{size}</option>
                   ))}
                 </select>
-                <p><strong>Cash on Delivery</strong></p>
+                <p>Cash on Delivery</p>
                 <div className="button-group">
                   <button type="button" onClick={handleBuy} className="buy-now">Buy</button>
                   <button type="button" onClick={closeCheckout} className="close-details">Close</button>
@@ -177,4 +126,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Men;
