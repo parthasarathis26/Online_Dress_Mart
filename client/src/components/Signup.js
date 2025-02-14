@@ -27,7 +27,7 @@ const Signup = () => {
     } else {
       setError('');
       alert('Signup Successful');
-      navigate('/login');
+      navigate('/');
     }
   };
 

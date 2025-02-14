@@ -1,0 +1,74 @@
+/* src/styles/Navbar.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+  .navbar-logo img {
+    height: 70px;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    position: relative;
+  }
+  
+  .search-box input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-box input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+  }
+  
+  
+  .navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+  }
+  
+  .navbar-menu li {
+    display: inline;
+  }
+  
+  .navbar-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  
+  .navbar-menu a:hover {
+    color: #ffde59;
+  }
+  
+  .logout-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff4b4b;
+  }
+  
