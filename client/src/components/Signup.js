@@ -1,6 +1,7 @@
 // src/components/Signup.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import background from '../img/8972379.jpg';
 import '../styles/Auth.css';
 
@@ -16,7 +17,7 @@ const Signup = () => {
     return regex.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateEmail(email)) {
       setError('Invalid email format');
@@ -25,9 +26,16 @@ const Signup = () => {
     } else if (password !== confirmPassword) {
       setError('Passwords do not match');
     } else {
-      setError('');
-      alert('Signup Successful');
-      navigate('/');
+      try {
+        await axios.post('http://localhost:5000/api/auth/signup', {
+          email,
+          password
+        });
+        alert('Signup Successful');
+        navigate('/');
+      } catch (error) {
+        setError(error.response?.data?.message || 'Server Error');
+      }
     }
   };
 
@@ -61,7 +69,7 @@ const Signup = () => {
         />
         <button type="submit">Signup</button>
         <p>
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <a href="/">Login</a>
         </p>
       </form>
     </div>

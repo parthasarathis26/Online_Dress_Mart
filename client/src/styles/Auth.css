@@ -68,4 +68,22 @@ body {
     color: #ff4d4d;
     margin-bottom: 10px;
   }
+  /* src/styles/Auth.css */
+.admin-login-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #41556c;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.admin-login-button:hover {
+  background-color: #2e3a49;
+}
+
   

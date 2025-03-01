@@ -1,9 +1,12 @@
 // src/components/Home.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Navigation from './Navigation';
 import Card from './Card';
-import productsData from '../assets/clothing_products_400.json';
 import '../styles/Home.css';
+import carousel1 from '../img/OIP.jpg';
+import carousel2 from '../img/8279879.jpg';
+import carousel3 from '../img/8279918.jpg';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -19,9 +22,35 @@ const Home = () => {
     size: ''
   });
 
+  const carouselContent = [
+    { image: carousel1, title: "Elegant Dresses", description: "Find your perfect outfit for any occasion." },
+    { image: carousel2, title: "Trendy Styles", description: "Stay ahead with the latest fashion trends." },
+    { image: carousel3, title: "Exclusive Offers", description: "Shop now and enjoy special discounts!" }
+];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+
   useEffect(() => {
-    setProducts(productsData);
+    fetchProducts();
   }, []);
+
+  const fetchProducts = async () => {
+    try {
+      const res = await axios.get('http://localhost:5000/api/products');
+      setProducts(res.data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselContent.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselContent.length) % carouselContent.length);
+  };
+
 
   const loadMore = () => {
     setVisible((prevValue) => prevValue + 20); // Load 20 more each click
@@ -63,6 +92,21 @@ const Home = () => {
   return (
     <>
       <Navigation />
+      <div className="carousel-container">
+        <button className="prev" onClick={prevSlide}>&lt;</button>
+
+        <div className="carousel-slide">
+          <div className="carousel-text">
+            <h2>{carouselContent[currentIndex].title}</h2>
+            <p>{carouselContent[currentIndex].description}</p>
+          </div>
+          <div className="carousel-image">
+            <img src={carouselContent[currentIndex].image} alt="carousel" />
+          </div>
+        </div>
+
+        <button className="next" onClick={nextSlide}>&gt;</button>
+      </div>
       <div className="home-content">
         <h1>Discover the Latest Trends</h1>
         <div className="product-grid">
