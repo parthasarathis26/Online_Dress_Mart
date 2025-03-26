@@ -14,11 +14,13 @@ import AdminHome from './components/AdminHome';
 import AdminNavbar from './components/AdminNavbar';
 import ProtectedRoute from './components/ProtectedRoute';
 import AdminAdd from './components/AdminAdd';
+import Footer from './components/Footer';
 import './styles/Auth.css';
 import './styles/Navbar.css';
 import './styles/Home.css';
 import './styles/Card.css';
 import './styles/AdminHome.css'
+import './styles/Footer.css'
 
 const Root = () => {
   return (
@@ -35,6 +37,7 @@ const Root = () => {
         <Route path="/adminlogin" element={<AdminLogin />}/>
         <Route path="/adminhome" element={<AdminHome />} />
         <Route path="/adminadd" element={<AdminAdd/>}/>
+        <Route path='/footer' element={<Footer/>}/>
       </Routes>
     </Router>
   );

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navigation from './Navigation';
 import Card from './Card';
+import Footer from './Footer'
 import '../styles/Home.css';
 import carousel1 from '../img/OIP.jpg';
 import carousel2 from '../img/8279879.jpg';
@@ -217,6 +218,7 @@ const Home = () => {
           </div>
         )}
       </div>
+      <Footer/>
     </>
   );
 };

@@ -45,12 +45,15 @@ const Navigation = () => {
     <nav className="navbar">
       <div className="navbar-logo">
         <img src={logo} alt="Logo" />
+        
       </div>
+      <span className="company-name">P.R. COTTONS</span>
       <div className="search-box">
         <input type="text" placeholder='Search Here'></input>
       </div>
       <ul className="navbar-menu">
         <li><Link to="/home">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
         <li><Link to="/men">Mens</Link></li>
         <li><Link to="/women">Womens</Link></li>
         <li><Link to="/kids">Kids</Link></li>

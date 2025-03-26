@@ -223,6 +223,8 @@
   overflow: hidden;
   background-color: #ffebcd; /* Light green */
   border-radius: 10px;
+  margin-top: 150px; /* Push content down so it doesn’t overlap */
+    padding: 20px;
 }
 
 .carousel-slide {

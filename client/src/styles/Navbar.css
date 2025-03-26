@@ -1,6 +1,11 @@
 /* src/styles/Navbar.css */
 .navbar {
-    display: flex;
+  display: flex;
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  width: 97.5%;
+  z-index: 1000;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
@@ -150,6 +155,19 @@
     transform: scale(1);
     pointer-events: auto;
   }
+
+  .company-name {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+  .home-content {
+    margin-top: 90px; /* Adjust this value based on navbar height */
+}
+  
+  
   
   
   
